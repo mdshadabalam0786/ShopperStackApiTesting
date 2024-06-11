@@ -8,8 +8,10 @@ def getKeyShopperId():
     # session.headers.update({"content-type":"appliction/json"})
     session.headers.update({"Content-Type": "application/json"})
     payload={
-            "email":"syedmaheen687@gmail.com",
-            "password": "1Cd19ec14$",
+            # "email":"syedmaheen687@gmail.com",
+            "email":"alamsahdab786@gmail.com",
+            # "password": "1Cd19ec14$",
+            "password": "Nagma@123",
             "role": "SHOPPER"
              }
 
