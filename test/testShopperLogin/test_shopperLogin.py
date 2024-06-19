@@ -12,6 +12,7 @@ def test_shopperLoginValidCredential001(getKeyShopperId):
              }
     
     response=session.post(r"https://www.shoppersstack.com/shopping/users/login",json=payload)
+    print(response.text)
     # assert response.status_code==200,f"found this status actual from the server {response.status_code}"
     r=loads(response.text)
     print(r)
@@ -30,6 +31,7 @@ def test_shopperLoginInValidCredential002(getKeyShopperId):
              }
     
     response=session.post(r"https://www.shoppersstack.com/shopping/users/login",json=payload)
+    print(response.text)
     r=loads(response.text)
     print(r)
     assert r['statusCode']==401,f"found this status actual from the server {response.status_code}"

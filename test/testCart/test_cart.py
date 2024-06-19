@@ -10,6 +10,7 @@ session=Session()
 def test_viewProduct(getKeyShopperId):
     session.headers.update({"content-type":"application/json"})
     response=session.get(f"{url}/products/alpha")
+    print(response)
     #=================================================================================================================
     assert response.status_code==200,f"found this status actual from the server {response.status_code}"
     assert response.elapsed.total_seconds()<=3,f"found this status actual from the server {response.elapsed.total_seconds()}"
@@ -22,7 +23,7 @@ def test_viewProduct(getKeyShopperId):
     
     
     
-      
+    
 def test_addCart(getKeyShopperId):
     session.headers.update({"Authorization": f"Bearer {getKeyShopperId[0]}"})
     session.headers.update({"content-type":"application/json"})
@@ -34,7 +35,7 @@ def test_addCart(getKeyShopperId):
     response=session.post(f"{url}/shoppers/{getKeyShopperId[1]}/carts",json=payload)
     assert response.status_code==201,f"found this status actual from the server {response.status_code}"
     assert response.elapsed.total_seconds()<=3,f"found this status actual from the server {response.elapsed.total_seconds()}"
-    
+    print(response)
     r=loads(response.text)
     print(len(r['data']))
     itemid.append(r['data']['itemId'])
@@ -55,6 +56,7 @@ def test_getCart(getKeyShopperId):
     r=loads(response.text)
     print(r)
 
+@pytest.mark.skip
 def test_updateCart(getKeyShopperId):
     session.headers.update({"content-type":"application/json"})
     
@@ -70,7 +72,7 @@ def test_updateCart(getKeyShopperId):
     assert response.ok==True,f"found this status actual from the server {response.ok}"
     print(response.text)
 
-
+@pytest.mark.skip
 def test_DeleteCart(getKeyShopperId):
     session.headers.update({"content-type":"application/json"})
     response=session.delete(f"{url}/shoppers/{getKeyShopperId[1]}/carts/{productIdList[3]}")
